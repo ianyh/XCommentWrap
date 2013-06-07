@@ -10,7 +10,7 @@
 		405AF5771761543400434A79 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405AF5761761543400434A79 /* Cocoa.framework */; };
 		405AF5811761543400434A79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 405AF57F1761543400434A79 /* InfoPlist.strings */; };
 		405AF58A176157AB00434A79 /* CWPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 405AF589176157AB00434A79 /* CWPlugin.m */; };
-		406F943E17623E9C00675097 /* format in Resources */ = {isa = PBXBuildFile; fileRef = 406F943D17623E9C00675097 /* format */; };
+		406F943E17623E9C00675097 /* format.el in Resources */ = {isa = PBXBuildFile; fileRef = 406F943D17623E9C00675097 /* format.el */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +24,7 @@
 		405AF5821761543400434A79 /* XCommentWrap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCommentWrap-Prefix.pch"; sourceTree = "<group>"; };
 		405AF588176157AB00434A79 /* CWPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWPlugin.h; sourceTree = "<group>"; };
 		405AF589176157AB00434A79 /* CWPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWPlugin.m; sourceTree = "<group>"; };
-		406F943D17623E9C00675097 /* format */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = format; path = bin/format; sourceTree = SOURCE_ROOT; };
+		406F943D17623E9C00675097 /* format.el */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = format.el; path = bin/format.el; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 		405AF57D1761543400434A79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				406F943D17623E9C00675097 /* format */,
+				406F943D17623E9C00675097 /* format.el */,
 				405AF57E1761543400434A79 /* XCommentWrap-Info.plist */,
 				405AF57F1761543400434A79 /* InfoPlist.strings */,
 				405AF5821761543400434A79 /* XCommentWrap-Prefix.pch */,
@@ -148,7 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				405AF5811761543400434A79 /* InfoPlist.strings in Resources */,
-				406F943E17623E9C00675097 /* format in Resources */,
+				406F943E17623E9C00675097 /* format.el in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

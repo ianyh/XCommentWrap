@@ -93,6 +93,7 @@
 
     NSRange selectedRange = [textView.selectedRanges[0] rangeValue];
     NSRange paragraphRange = [textView.textStorage.string paragraphRangeForRange:selectedRange];
+    NSRange totalRange = paragraphRange;
 
     if (paragraphRange.location == NSNotFound) return;
 
@@ -110,6 +111,9 @@
 
         [commentBlock insertString:paragraphString atIndex:0];
 
+        totalRange.location = previousParagraphRange.location;
+        totalRange.length += previousParagraphRange.length;
+
         previousParagraphRange.location = previousParagraphRange.location - 1;
         previousParagraphRange.length = 0;
     }
@@ -124,11 +128,13 @@
 
         [commentBlock appendString:paragraphString];
 
+        totalRange.length += nextParagraphRange.length;
+
         nextParagraphRange.location = nextParagraphRange.location + nextParagraphRange.length;
         nextParagraphRange.length = 0;
     }
 
-    NSString *formatScriptPath = [self.pluginBundle pathForResource:@"format" ofType:nil];
+    NSString *formatScriptPath = [self.pluginBundle pathForResource:@"format" ofType:@"el"];
     NSPipe *inputPipe = [NSPipe pipe];
     NSPipe *outputPipe = [NSPipe pipe];
     NSTask *formatTask = [[NSTask alloc] init];
@@ -148,7 +154,15 @@
     NSData *data = [readHandle readDataToEndOfFile];
 
     NSString *formattedString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    formattedString = [formattedString substringToIndex:formattedString.length - 2];
+    totalRange.length--;
+
+    if (paragraphRange.length > 80) {
+        [textView.textStorage replaceCharactersInRange:totalRange withString:formattedString];
+    }
 }
+
+// 
 
 - (NSString *)commentPrefixWithLineString:(NSString *)lineString {
     NSRange lineStringRange = NSMakeRange(0, lineString.length);
