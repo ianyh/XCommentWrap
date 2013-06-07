@@ -120,21 +120,21 @@
         previousParagraphRange.length = 0;
     }
 
-    NSRange nextParagraphRange = { .location = paragraphRange.location + paragraphRange.length, .length = 0 };
-    while (nextParagraphRange.location < textView.textStorage.string.length) {
-        nextParagraphRange = [textView.textStorage.string paragraphRangeForRange:nextParagraphRange];
-        if (nextParagraphRange.location == NSNotFound) break;
-
-        paragraphString = [textView.textStorage.string substringWithRange:nextParagraphRange];
-        if (![self commentPrefixWithLineString:paragraphString]) break;
-
-        [commentBlock appendString:paragraphString];
-
-        totalRange.length += nextParagraphRange.length;
-
-        nextParagraphRange.location = nextParagraphRange.location + nextParagraphRange.length;
-        nextParagraphRange.length = 0;
-    }
+//    NSRange nextParagraphRange = { .location = paragraphRange.location + paragraphRange.length, .length = 0 };
+//    while (nextParagraphRange.location < textView.textStorage.string.length) {
+//        nextParagraphRange = [textView.textStorage.string paragraphRangeForRange:nextParagraphRange];
+//        if (nextParagraphRange.location == NSNotFound) break;
+//
+//        paragraphString = [textView.textStorage.string substringWithRange:nextParagraphRange];
+//        if (![self commentPrefixWithLineString:paragraphString]) break;
+//
+//        [commentBlock appendString:paragraphString];
+//
+//        totalRange.length += nextParagraphRange.length;
+//
+//        nextParagraphRange.location = nextParagraphRange.location + nextParagraphRange.length;
+//        nextParagraphRange.length = 0;
+//    }
 
     NSString *formatScriptPath = [self.pluginBundle pathForResource:@"format" ofType:@"el"];
     NSPipe *inputPipe = [NSPipe pipe];
@@ -157,8 +157,11 @@
 
     NSString *formattedString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 
-    if (paragraphRange.length > 80) {
+    if (paragraphRange.length > 81) {
         [textView.textStorage replaceCharactersInRange:totalRange withString:formattedString];
+        NSRange selectedRange = textView.selectedRange;
+        selectedRange.location--;
+        textView.selectedRange = selectedRange;
     }
 }
 
