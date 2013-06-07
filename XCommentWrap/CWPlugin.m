@@ -9,11 +9,15 @@
 #import "CWPlugin.h"
 
 @interface CWPlugin ()
+@property (nonatomic, strong) NSBundle *pluginBundle;
+
 @property (nonatomic, strong) NSRegularExpression *singleLinePrefixExpression;
 @property (nonatomic, strong) NSRegularExpression *multiLineStartPrefixExpression;
 @property (nonatomic, strong) NSRegularExpression *multiLinePrefixExpression;
 
 @property (nonatomic, assign) BOOL wrapping;
+
+- (instancetype)init DEPRECATED_ATTRIBUTE;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification;
 - (void)textDidChange:(NSNotification *)notification;
@@ -27,13 +31,17 @@
     static CWPlugin *sharedPlugin = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedPlugin = [[CWPlugin alloc] init];
+        sharedPlugin = [[CWPlugin alloc] initWithBundle:pluginBundle];
     });
 }
 
-- (instancetype)init {
+- (instancetype)init { return nil; }
+
+- (instancetype)initWithBundle:(NSBundle *)bundle {
     self = [super init];
     if (self) {
+        self.pluginBundle = bundle;
+
         _wrapping = NO;
 
         [NSNotificationCenter.defaultCenter addObserver:self
@@ -89,6 +97,7 @@
     if (paragraphRange.location == NSNotFound) return;
 
     NSString *paragraphString = [textView.textStorage.string substringWithRange:paragraphRange];
+    if (![self commentPrefixWithLineString:paragraphString]) return;
     NSMutableString *commentBlock = [[NSMutableString alloc] initWithString:paragraphString];
 
     NSRange previousParagraphRange = { .location = paragraphRange.location - 1, .length = 0 };
@@ -118,6 +127,27 @@
         nextParagraphRange.location = nextParagraphRange.location + nextParagraphRange.length;
         nextParagraphRange.length = 0;
     }
+
+    NSString *formatScriptPath = [self.pluginBundle pathForResource:@"format" ofType:nil];
+    NSPipe *inputPipe = [NSPipe pipe];
+    NSPipe *outputPipe = [NSPipe pipe];
+    NSTask *formatTask = [[NSTask alloc] init];
+
+    formatTask.launchPath = @"/usr/bin/env";
+    formatTask.arguments = @[ @"emacs", @"--script", formatScriptPath, @"c++-mode"];
+    formatTask.standardInput = inputPipe;
+    formatTask.standardOutput = outputPipe;
+
+    NSFileHandle *writeHandle = [inputPipe fileHandleForWriting];
+    [writeHandle writeData:[commentBlock dataUsingEncoding:NSASCIIStringEncoding]];
+    [writeHandle closeFile];
+
+    [formatTask launch];
+
+    NSFileHandle *readHandle = [outputPipe fileHandleForReading];
+    NSData *data = [readHandle readDataToEndOfFile];
+
+    NSString *formattedString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 }
 
 - (NSString *)commentPrefixWithLineString:(NSString *)lineString {
