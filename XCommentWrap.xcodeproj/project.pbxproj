@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		405AF5771761543400434A79 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405AF5761761543400434A79 /* Cocoa.framework */; };
 		405AF5811761543400434A79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 405AF57F1761543400434A79 /* InfoPlist.strings */; };
+		405AF58A176157AB00434A79 /* CWPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 405AF589176157AB00434A79 /* CWPlugin.m */; };
+		406F943E17623E9C00675097 /* format in Resources */ = {isa = PBXBuildFile; fileRef = 406F943D17623E9C00675097 /* format */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		405AF5731761543400434A79 /* XCommentWrap.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCommentWrap.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		405AF5731761543400434A79 /* XCommentWrap.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCommentWrap.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		405AF5761761543400434A79 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		405AF5791761543400434A79 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		405AF57A1761543400434A79 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -20,6 +22,9 @@
 		405AF57E1761543400434A79 /* XCommentWrap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XCommentWrap-Info.plist"; sourceTree = "<group>"; };
 		405AF5801761543400434A79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		405AF5821761543400434A79 /* XCommentWrap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCommentWrap-Prefix.pch"; sourceTree = "<group>"; };
+		405AF588176157AB00434A79 /* CWPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWPlugin.h; sourceTree = "<group>"; };
+		405AF589176157AB00434A79 /* CWPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWPlugin.m; sourceTree = "<group>"; };
+		406F943D17623E9C00675097 /* format */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = format; path = bin/format; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +51,7 @@
 		405AF5741761543400434A79 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				405AF5731761543400434A79 /* XCommentWrap.bundle */,
+				405AF5731761543400434A79 /* XCommentWrap.xcplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				405AF57D1761543400434A79 /* Supporting Files */,
+				405AF588176157AB00434A79 /* CWPlugin.h */,
+				405AF589176157AB00434A79 /* CWPlugin.m */,
 			);
 			path = XCommentWrap;
 			sourceTree = "<group>";
@@ -81,6 +88,7 @@
 		405AF57D1761543400434A79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				406F943D17623E9C00675097 /* format */,
 				405AF57E1761543400434A79 /* XCommentWrap-Info.plist */,
 				405AF57F1761543400434A79 /* InfoPlist.strings */,
 				405AF5821761543400434A79 /* XCommentWrap-Prefix.pch */,
@@ -105,7 +113,7 @@
 			);
 			name = XCommentWrap;
 			productName = XCommentWrap;
-			productReference = 405AF5731761543400434A79 /* XCommentWrap.bundle */;
+			productReference = 405AF5731761543400434A79 /* XCommentWrap.xcplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -140,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				405AF5811761543400434A79 /* InfoPlist.strings in Resources */,
+				406F943E17623E9C00675097 /* format in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405AF58A176157AB00434A79 /* CWPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,12 +238,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "${HOME}";
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCommentWrap/XCommentWrap-Prefix.pch";
 				INFOPLIST_FILE = "XCommentWrap/XCommentWrap-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = xcplugin;
 			};
 			name = Debug;
 		};
@@ -241,12 +255,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "${HOME}";
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XCommentWrap/XCommentWrap-Prefix.pch";
 				INFOPLIST_FILE = "XCommentWrap/XCommentWrap-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = xcplugin;
 			};
 			name = Release;
 		};
@@ -269,6 +287,7 @@
 				405AF5871761543400434A79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
