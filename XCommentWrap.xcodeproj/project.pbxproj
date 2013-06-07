@@ -10,19 +10,36 @@
 		403CFA7117626C3800803D4E /* NSTask+InputOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA7017626C3800803D4E /* NSTask+InputOutput.m */; };
 		403CFA7417626E2E00803D4E /* NSTextView+CommentBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA7317626E2E00803D4E /* NSTextView+CommentBlocks.m */; };
 		403CFA771762728800803D4E /* NSString+Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA761762728800803D4E /* NSString+Comments.m */; };
+		403CFA7F1762780100803D4E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403CFA7E1762780100803D4E /* SenTestingKit.framework */; };
+		403CFA801762780100803D4E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405AF5761761543400434A79 /* Cocoa.framework */; };
+		403CFA861762780100803D4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 403CFA841762780100803D4E /* InfoPlist.strings */; };
+		403CFA891762780100803D4E /* NSString+CommentsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA881762780100803D4E /* NSString+CommentsTest.m */; };
 		405AF5771761543400434A79 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405AF5761761543400434A79 /* Cocoa.framework */; };
 		405AF5811761543400434A79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 405AF57F1761543400434A79 /* InfoPlist.strings */; };
 		405AF58A176157AB00434A79 /* CWPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 405AF589176157AB00434A79 /* CWPlugin.m */; };
 		406F943E17623E9C00675097 /* format.el in Resources */ = {isa = PBXBuildFile; fileRef = 406F943D17623E9C00675097 /* format.el */; };
+		40BD60FA1762892700C80E6E /* NSString+Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA761762728800803D4E /* NSString+Comments.m */; };
+		40BD60FB1762892F00C80E6E /* CWPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 405AF589176157AB00434A79 /* CWPlugin.m */; };
+		40BD60FC1762892F00C80E6E /* NSTask+InputOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA7017626C3800803D4E /* NSTask+InputOutput.m */; };
+		40BD60FD1762892F00C80E6E /* NSTextView+CommentBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA7317626E2E00803D4E /* NSTextView+CommentBlocks.m */; };
+		40BD60FF17628B7F00C80E6E /* NSTask+InputOutputTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BD60FE17628B7F00C80E6E /* NSTask+InputOutputTest.m */; };
+		8B37801CE7334914BF7070E4 /* libPods-XCommentWrapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 866BBD8FC45A40B999F1F86E /* libPods-XCommentWrapTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4385F6369844AE9A136C59 /* Pods-XCommentWrapTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XCommentWrapTests.xcconfig"; path = "Pods/Pods-XCommentWrapTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		403CFA6F17626C3800803D4E /* NSTask+InputOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTask+InputOutput.h"; sourceTree = "<group>"; };
 		403CFA7017626C3800803D4E /* NSTask+InputOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+InputOutput.m"; sourceTree = "<group>"; };
 		403CFA7217626E2E00803D4E /* NSTextView+CommentBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+CommentBlocks.h"; sourceTree = "<group>"; };
 		403CFA7317626E2E00803D4E /* NSTextView+CommentBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+CommentBlocks.m"; sourceTree = "<group>"; };
 		403CFA751762728800803D4E /* NSString+Comments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Comments.h"; sourceTree = "<group>"; };
 		403CFA761762728800803D4E /* NSString+Comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Comments.m"; sourceTree = "<group>"; };
+		403CFA7D1762780100803D4E /* XCommentWrapTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCommentWrapTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		403CFA7E1762780100803D4E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		403CFA831762780100803D4E /* XCommentWrapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XCommentWrapTests-Info.plist"; sourceTree = "<group>"; };
+		403CFA851762780100803D4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		403CFA881762780100803D4E /* NSString+CommentsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CommentsTest.m"; sourceTree = "<group>"; };
+		403CFA8A1762780100803D4E /* XCommentWrapTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XCommentWrapTests-Prefix.pch"; sourceTree = "<group>"; };
 		405AF5731761543400434A79 /* XCommentWrap.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCommentWrap.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		405AF5761761543400434A79 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		405AF5791761543400434A79 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -34,9 +51,21 @@
 		405AF588176157AB00434A79 /* CWPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWPlugin.h; sourceTree = "<group>"; };
 		405AF589176157AB00434A79 /* CWPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWPlugin.m; sourceTree = "<group>"; };
 		406F943D17623E9C00675097 /* format.el */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = format.el; path = bin/format.el; sourceTree = SOURCE_ROOT; };
+		40BD60FE17628B7F00C80E6E /* NSTask+InputOutputTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+InputOutputTest.m"; sourceTree = "<group>"; };
+		866BBD8FC45A40B999F1F86E /* libPods-XCommentWrapTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XCommentWrapTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		403CFA791762780100803D4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				403CFA7F1762780100803D4E /* SenTestingKit.framework in Frameworks */,
+				403CFA801762780100803D4E /* Cocoa.framework in Frameworks */,
+				8B37801CE7334914BF7070E4 /* libPods-XCommentWrapTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		405AF5701761543400434A79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,12 +77,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		403CFA811762780100803D4E /* XCommentWrapTests */ = {
+			isa = PBXGroup;
+			children = (
+				403CFA821762780100803D4E /* Supporting Files */,
+				40BD60FE17628B7F00C80E6E /* NSTask+InputOutputTest.m */,
+				403CFA881762780100803D4E /* NSString+CommentsTest.m */,
+			);
+			path = XCommentWrapTests;
+			sourceTree = "<group>";
+		};
+		403CFA821762780100803D4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				403CFA831762780100803D4E /* XCommentWrapTests-Info.plist */,
+				403CFA841762780100803D4E /* InfoPlist.strings */,
+				403CFA8A1762780100803D4E /* XCommentWrapTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		405AF56A1761543400434A79 = {
 			isa = PBXGroup;
 			children = (
 				405AF57C1761543400434A79 /* XCommentWrap */,
+				403CFA811762780100803D4E /* XCommentWrapTests */,
 				405AF5751761543400434A79 /* Frameworks */,
 				405AF5741761543400434A79 /* Products */,
+				0E4385F6369844AE9A136C59 /* Pods-XCommentWrapTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				405AF5731761543400434A79 /* XCommentWrap.xcplugin */,
+				403CFA7D1762780100803D4E /* XCommentWrapTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,7 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				405AF5761761543400434A79 /* Cocoa.framework */,
+				403CFA7E1762780100803D4E /* SenTestingKit.framework */,
 				405AF5781761543400434A79 /* Other Frameworks */,
+				866BBD8FC45A40B999F1F86E /* libPods-XCommentWrapTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,6 +168,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		403CFA7C1762780100803D4E /* XCommentWrapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 403CFA8B1762780100803D4E /* Build configuration list for PBXNativeTarget "XCommentWrapTests" */;
+			buildPhases = (
+				CB8D7103CBA942F7BF189BC9 /* Check Pods Manifest.lock */,
+				37065D8B07684B46A51A17FE /* Check Pods Manifest.lock */,
+				403CFA781762780100803D4E /* Sources */,
+				403CFA791762780100803D4E /* Frameworks */,
+				403CFA7A1762780100803D4E /* Resources */,
+				403CFA7B1762780100803D4E /* ShellScript */,
+				53938C8E34074627A749FA24 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XCommentWrapTests;
+			productName = XCommentWrapTests;
+			productReference = 403CFA7D1762780100803D4E /* XCommentWrapTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		405AF5721761543400434A79 /* XCommentWrap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 405AF5851761543400434A79 /* Build configuration list for PBXNativeTarget "XCommentWrap" */;
@@ -153,11 +228,20 @@
 			projectRoot = "";
 			targets = (
 				405AF5721761543400434A79 /* XCommentWrap */,
+				403CFA7C1762780100803D4E /* XCommentWrapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		403CFA7A1762780100803D4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				403CFA861762780100803D4E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		405AF5711761543400434A79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,7 +253,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		37065D8B07684B46A51A17FE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		403CFA7B1762780100803D4E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		53938C8E34074627A749FA24 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-XCommentWrapTests-resources.sh\"\n";
+		};
+		CB8D7103CBA942F7BF189BC9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		403CFA781762780100803D4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				403CFA891762780100803D4E /* NSString+CommentsTest.m in Sources */,
+				40BD60FA1762892700C80E6E /* NSString+Comments.m in Sources */,
+				40BD60FB1762892F00C80E6E /* CWPlugin.m in Sources */,
+				40BD60FC1762892F00C80E6E /* NSTask+InputOutput.m in Sources */,
+				40BD60FD1762892F00C80E6E /* NSTextView+CommentBlocks.m in Sources */,
+				40BD60FF17628B7F00C80E6E /* NSTask+InputOutputTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		405AF56F1761543400434A79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -184,6 +339,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		403CFA841762780100803D4E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				403CFA851762780100803D4E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		405AF57F1761543400434A79 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -195,6 +358,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		403CFA8C1762780100803D4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E4385F6369844AE9A136C59 /* Pods-XCommentWrapTests.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XCommentWrapTests/XCommentWrapTests-Prefix.pch";
+				INFOPLIST_FILE = "XCommentWrapTests/XCommentWrapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		403CFA8D1762780100803D4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E4385F6369844AE9A136C59 /* Pods-XCommentWrapTests.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XCommentWrapTests/XCommentWrapTests-Prefix.pch";
+				INFOPLIST_FILE = "XCommentWrapTests/XCommentWrapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		405AF5831761543400434A79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -289,6 +480,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		403CFA8B1762780100803D4E /* Build configuration list for PBXNativeTarget "XCommentWrapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				403CFA8C1762780100803D4E /* Debug */,
+				403CFA8D1762780100803D4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		405AF56E1761543400434A79 /* Build configuration list for PBXProject "XCommentWrap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
