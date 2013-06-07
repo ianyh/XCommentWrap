@@ -18,13 +18,15 @@
     NSPipe *outputPipe = [NSPipe pipe];
 
     task.launchPath = launchPath;
-    task.arguments = arguments;
+    task.arguments = arguments ?: @[];
     task.standardInput = inputPipe;
     task.standardOutput = outputPipe;
 
-    NSFileHandle *writeHandle = inputPipe.fileHandleForWriting;
-    [writeHandle writeData:[input dataUsingEncoding:NSASCIIStringEncoding]];
-    [writeHandle closeFile];
+    if (input) {
+        NSFileHandle *writeHandle = inputPipe.fileHandleForWriting;
+        [writeHandle writeData:[input dataUsingEncoding:NSASCIIStringEncoding]];
+        [writeHandle closeFile];
+    }
 
     [task launch];
 

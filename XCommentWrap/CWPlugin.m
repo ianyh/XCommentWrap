@@ -9,6 +9,7 @@
 #import "CWPlugin.h"
 
 #import "NSTask+InputOutput.h"
+#import "NSTextView+CommentBlocks.h"
 
 @interface CWPlugin ()
 @property (nonatomic, strong) NSBundle *pluginBundle;
@@ -89,61 +90,21 @@
     static NSString *sourceEditorClassName = @"DVTSourceTextView";
     if (![notification.object isKindOfClass:NSClassFromString(sourceEditorClassName)]) return;
 
-    NSTextView *textView = (NSTextView *)notification.object;  
+    NSTextView *textView = notification.object;
+    NSRange totalRange;
+    NSRange lineRange;
+    NSString *commentBlock = [textView selectedCommentBlockWithOptions:CWCommentBlockOptionBackSearching
+                                                                 range:&totalRange
+                                                     selectedLineRange:&lineRange];
 
-    if (textView.selectedRanges.count != 1) return;
-
-    NSRange selectedRange = [textView.selectedRanges[0] rangeValue];
-    NSRange paragraphRange = [textView.textStorage.string paragraphRangeForRange:selectedRange];
-    if (paragraphRange.length < 80) return;
-
-    NSRange totalRange = paragraphRange;
-
-    if (paragraphRange.location == NSNotFound) return;
-
-    NSString *paragraphString = [textView.textStorage.string substringWithRange:paragraphRange];
-    if (![self commentPrefixWithLineString:paragraphString]) return;
-    NSMutableString *commentBlock = [[NSMutableString alloc] initWithString:paragraphString];
-
-    NSRange previousParagraphRange = { .location = paragraphRange.location - 1, .length = 0 };
-    while (previousParagraphRange.location < textView.textStorage.string.length) {
-        previousParagraphRange = [textView.textStorage.string paragraphRangeForRange:previousParagraphRange];
-        if (previousParagraphRange.location == NSNotFound) break;
-
-        paragraphString = [textView.textStorage.string substringWithRange:previousParagraphRange];
-        if (![self commentPrefixWithLineString:paragraphString]) break;
-
-        [commentBlock insertString:paragraphString atIndex:0];
-
-        totalRange.location = previousParagraphRange.location;
-        totalRange.length += previousParagraphRange.length;
-
-        previousParagraphRange.location = previousParagraphRange.location - 1;
-        previousParagraphRange.length = 0;
-    }
-
-//    NSRange nextParagraphRange = { .location = paragraphRange.location + paragraphRange.length, .length = 0 };
-//    while (nextParagraphRange.location < textView.textStorage.string.length) {
-//        nextParagraphRange = [textView.textStorage.string paragraphRangeForRange:nextParagraphRange];
-//        if (nextParagraphRange.location == NSNotFound) break;
-//
-//        paragraphString = [textView.textStorage.string substringWithRange:nextParagraphRange];
-//        if (![self commentPrefixWithLineString:paragraphString]) break;
-//
-//        [commentBlock appendString:paragraphString];
-//
-//        totalRange.length += nextParagraphRange.length;
-//
-//        nextParagraphRange.location = nextParagraphRange.location + nextParagraphRange.length;
-//        nextParagraphRange.length = 0;
-//    }
+    if (!commentBlock) return;
 
     NSString *formatScriptPath = [self.pluginBundle pathForResource:@"format" ofType:@"el"];
     NSString *formattedCommentBlock = [NSTask outputForLaunchPath:@"/usr/bin/env"
                                                         arguments:@[ @"emacs", @"--script", formatScriptPath, @"c++-mode" ]
                                                             input:commentBlock];
 
-    if (paragraphRange.length > 81) {
+    if (lineRange.length > 81) {
         [textView.textStorage replaceCharactersInRange:totalRange withString:formattedCommentBlock];
         NSRange selectedRange = textView.selectedRange;
         selectedRange.location--;
