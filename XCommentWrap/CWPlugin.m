@@ -93,6 +93,8 @@
 
     NSRange selectedRange = [textView.selectedRanges[0] rangeValue];
     NSRange paragraphRange = [textView.textStorage.string paragraphRangeForRange:selectedRange];
+    if (paragraphRange.length < 80) return;
+
     NSRange totalRange = paragraphRange;
 
     if (paragraphRange.location == NSNotFound) return;
@@ -154,21 +156,16 @@
     NSData *data = [readHandle readDataToEndOfFile];
 
     NSString *formattedString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    formattedString = [formattedString substringToIndex:formattedString.length - 2];
-    totalRange.length--;
 
     if (paragraphRange.length > 80) {
         [textView.textStorage replaceCharactersInRange:totalRange withString:formattedString];
     }
 }
 
-// 
-
 - (NSString *)commentPrefixWithLineString:(NSString *)lineString {
     NSRange lineStringRange = NSMakeRange(0, lineString.length);
     NSTextCheckingResult *singleLinePrefixMatch = [self.singleLinePrefixExpression firstMatchInString:lineString options:0 range:lineStringRange];
     if (singleLinePrefixMatch) return [lineString substringWithRange:singleLinePrefixMatch.range];
-
     NSTextCheckingResult *multiLinePrefixMatch = [self.multiLinePrefixExpression firstMatchInString:lineString options:0 range:lineStringRange];
     if (multiLinePrefixMatch) return [lineString substringWithRange:multiLinePrefixMatch.range];
 

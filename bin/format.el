@@ -11,5 +11,6 @@
         (insert (read-from-minibuffer ""))
         (insert "\n"))
     (error nil))
+  (set-fill-column 80)
   (fill-region (point-min) (point-max))
   (princ (buffer-string)))
