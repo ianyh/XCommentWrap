@@ -11,7 +11,6 @@
 #import "NSTask+InputOutput.h"
 #import "NSTextView+CommentBlocks.h"
 
-static const NSUInteger CWCodeCommentMaxColumn = 80;
 
 @interface CWPlugin ()
 @property (nonatomic, strong) NSBundle *pluginBundle;
@@ -73,26 +72,35 @@ static const NSUInteger CWCodeCommentMaxColumn = 80;
     if (![notification.object isKindOfClass:NSClassFromString(sourceEditorClassName)]) return;
 
     NSTextView *textView = notification.object;
-    NSRange totalRange;
-    NSRange lineRange;
-    NSString *commentBlock = [textView selectedCommentBlockWithOptions:CWCommentBlockOptionBackSearching
-                                                                 range:&totalRange
-                                                     selectedLineRange:&lineRange];
 
+    // If the text view doesn't need reformatting we have no work to do.
+    if (!textView.needsCommentReformat) return;
+
+    NSRange totalRange;
+    NSString *commentBlock = [textView selectedCommentBlockWithOptions:CWCommentBlockOptionBackSearching
+                                                                 range:&totalRange];
+
+    // If there's no comment block to format we have no work to do.
     if (!commentBlock) return;
 
+    // Ottherwise we format it through emacs using c++-mode (which is close to
+    // an objc-mode and comes standard).
     NSString *formatScriptPath = [self.pluginBundle pathForResource:@"format" ofType:@"el"];
     NSString *formattedCommentBlock = [NSTask outputForLaunchPath:@"/usr/bin/env"
                                                         arguments:@[ @"emacs", @"--script", formatScriptPath, @"c++-mode" ]
                                                             input:commentBlock];
 
-    if (lineRange.length > CWCodeCommentMaxColumn + 1) {
-        [textView.textStorage replaceCharactersInRange:totalRange withString:formattedCommentBlock];
+    // Replace the comment block with the emacs formatted block.
+    [textView.textStorage replaceCharactersInRange:totalRange withString:formattedCommentBlock];
 
-        NSRange selectedRange = textView.selectedRange;
-        selectedRange.location--;
-        textView.selectedRange = selectedRange;
-    }
+    // The formatted comment block includes a breakline at the end. This is
+    // necessary for including a new line but still maintaining relative
+    // relationship with the rest of the code. But we want our cursor to be at
+    // the end of the comment, not on the next line. So we move the cursor
+    // back a position.
+    NSRange selectedRange = textView.selectedRange;
+    selectedRange.location--;
+    textView.selectedRange = selectedRange;
 }
 
 @end

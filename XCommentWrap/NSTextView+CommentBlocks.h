@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+// The maximum number of columns that should contain comments.
+extern NSUInteger CWCommentMaxColumn;
+
 // Options for searching for comments in a text view.
 typedef NS_OPTIONS(NSInteger, CWCommentBlockOptions) {
     // If this option is provided the comment block includes lines of comments
@@ -20,6 +23,10 @@ typedef NS_OPTIONS(NSInteger, CWCommentBlockOptions) {
 
 @interface NSTextView (CommentBlocks)
 
+// Returns YES if the currently selected line is a comment that extends beyond
+// the maximum comment column.
+- (BOOL)needsCommentReformat;
+
 // This method returns the currently selected comment block if it exists.
 //
 // options - Options to use when constructing the comment block. By default the
@@ -30,13 +37,9 @@ typedef NS_OPTIONS(NSInteger, CWCommentBlockOptions) {
 //         the range of the total text view's text that the comment block
 //         contains.
 //
-// selectedLineRange - An optional pointer to an NSRange struct that will be
-//                     filled out with the range of the total text taken up the
-//                     selected line.
-//
 // This method returns nil if no comment block could be constructed. This can
 // happen if there is currently a non-zero length selection or if the cursor is
 // not currently on a line of comments.
-- (NSString *)selectedCommentBlockWithOptions:(CWCommentBlockOptions)options range:(NSRange *)range selectedLineRange:(NSRange *)selectedLineRange;
+- (NSString *)selectedCommentBlockWithOptions:(CWCommentBlockOptions)options range:(NSRange *)range;
 
 @end
