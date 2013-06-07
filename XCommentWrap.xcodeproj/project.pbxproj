@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403CFA7117626C3800803D4E /* NSTask+InputOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 403CFA7017626C3800803D4E /* NSTask+InputOutput.m */; };
 		405AF5771761543400434A79 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405AF5761761543400434A79 /* Cocoa.framework */; };
 		405AF5811761543400434A79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 405AF57F1761543400434A79 /* InfoPlist.strings */; };
 		405AF58A176157AB00434A79 /* CWPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 405AF589176157AB00434A79 /* CWPlugin.m */; };
@@ -14,6 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		403CFA6F17626C3800803D4E /* NSTask+InputOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTask+InputOutput.h"; sourceTree = "<group>"; };
+		403CFA7017626C3800803D4E /* NSTask+InputOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+InputOutput.m"; sourceTree = "<group>"; };
 		405AF5731761543400434A79 /* XCommentWrap.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XCommentWrap.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		405AF5761761543400434A79 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		405AF5791761543400434A79 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -81,6 +84,8 @@
 				405AF57D1761543400434A79 /* Supporting Files */,
 				405AF588176157AB00434A79 /* CWPlugin.h */,
 				405AF589176157AB00434A79 /* CWPlugin.m */,
+				403CFA6F17626C3800803D4E /* NSTask+InputOutput.h */,
+				403CFA7017626C3800803D4E /* NSTask+InputOutput.m */,
 			);
 			path = XCommentWrap;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				405AF58A176157AB00434A79 /* CWPlugin.m in Sources */,
+				403CFA7117626C3800803D4E /* NSTask+InputOutput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

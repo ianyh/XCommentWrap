@@ -8,6 +8,8 @@
 
 #import "CWPlugin.h"
 
+#import "NSTask+InputOutput.h"
+
 @interface CWPlugin ()
 @property (nonatomic, strong) NSBundle *pluginBundle;
 
@@ -137,28 +139,12 @@
 //    }
 
     NSString *formatScriptPath = [self.pluginBundle pathForResource:@"format" ofType:@"el"];
-    NSPipe *inputPipe = [NSPipe pipe];
-    NSPipe *outputPipe = [NSPipe pipe];
-    NSTask *formatTask = [[NSTask alloc] init];
-
-    formatTask.launchPath = @"/usr/bin/env";
-    formatTask.arguments = @[ @"emacs", @"--script", formatScriptPath, @"c++-mode"];
-    formatTask.standardInput = inputPipe;
-    formatTask.standardOutput = outputPipe;
-
-    NSFileHandle *writeHandle = [inputPipe fileHandleForWriting];
-    [writeHandle writeData:[commentBlock dataUsingEncoding:NSASCIIStringEncoding]];
-    [writeHandle closeFile];
-
-    [formatTask launch];
-
-    NSFileHandle *readHandle = [outputPipe fileHandleForReading];
-    NSData *data = [readHandle readDataToEndOfFile];
-
-    NSString *formattedString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSString *formattedCommentBlock = [NSTask outputForLaunchPath:@"/usr/bin/env"
+                                                        arguments:@[ @"emacs", @"--script", formatScriptPath, @"c++-mode" ]
+                                                            input:commentBlock];
 
     if (paragraphRange.length > 81) {
-        [textView.textStorage replaceCharactersInRange:totalRange withString:formattedString];
+        [textView.textStorage replaceCharactersInRange:totalRange withString:formattedCommentBlock];
         NSRange selectedRange = textView.selectedRange;
         selectedRange.location--;
         textView.selectedRange = selectedRange;
