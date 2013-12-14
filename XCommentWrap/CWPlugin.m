@@ -50,8 +50,6 @@
 
 - (void)dealloc {
     [NSNotificationCenter.defaultCenter removeObserver:self];
-    [_pluginBundle release];
-    [super dealloc];
 }
    
 #pragma mark Notification Handlers

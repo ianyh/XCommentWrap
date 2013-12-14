@@ -87,7 +87,7 @@ NSUInteger CWCommentMaxColumn = 80;
 
     if (range) *range = totalRange;
 
-    return [commentBlock autorelease];
+    return commentBlock;
 }
 
 @end

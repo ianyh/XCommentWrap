@@ -36,9 +36,7 @@
 
     NSString *formattedString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 
-    [task release];
-
-    return [formattedString autorelease];
+    return formattedString;
 }
 
 @end

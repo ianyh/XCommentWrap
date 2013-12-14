@@ -15,7 +15,7 @@
 
     if (!commentPrefixExpression) {
         static NSString *commentPrefixPattern = @"^\\s*(//|/\\*|\\*)\\s*";
-        commentPrefixExpression = [[NSRegularExpression regularExpressionWithPattern:commentPrefixPattern options:0 error:NULL] retain];
+        commentPrefixExpression = [NSRegularExpression regularExpressionWithPattern:commentPrefixPattern options:0 error:NULL];
     }
     
     return ([commentPrefixExpression numberOfMatchesInString:self options:0 range:NSMakeRange(0, self.length)] > 0);
