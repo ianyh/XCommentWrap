@@ -11,7 +11,6 @@
 #import "NSTask+InputOutput.h"
 #import "NSTextView+CommentBlocks.h"
 
-
 @interface CWPlugin ()
 @property (nonatomic, strong) NSBundle *pluginBundle;
 

@@ -32,6 +32,8 @@
 	<string>Copyright © 2013 Ian Ynda-Hummel. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string>CWPlugin</string>
+	<key>XC4Compatible</key>
+	<true/>
 	<key>XC5Compatible</key>
 	<true/>
 	<key>XCPluginHasUI</key>
